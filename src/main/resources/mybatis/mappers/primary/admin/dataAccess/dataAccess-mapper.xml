@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="DataAccessMapper">
+
+<!--    <resultMap id="dataAccessResultMap" type="com.example.mybatis.admin.common.dataAccess.vo.DataAccessVo">-->
+<!--        <result column="ACCESS_ID" property="accessId"/>-->
+<!--        <result column="DB" property="db"/>-->
+<!--        <result column="MAPPER" property="mapper"/>-->
+<!--        <result column="DESCRIPTION" property="description"/>-->
+<!--        <result column="CRT_TIME" property="crtTime"/>-->
+<!--        <result column="UDT_TIME" property="udtTime"/>-->
+<!--    </resultMap>-->
+
+<!--    <select id="selectDataAccess" parameterType="string" resultMap="dataAccessResultMap">-->
+<!--        SELECT *-->
+<!--          FROM DATA_ACCESS-->
+<!--         WHERE 1 = 1-->
+<!--        <if test='accessId != null and !accessId.equals("")'>-->
+<!--           AND ACCESS_ID = #{accessId}-->
+<!--        </if>-->
+<!--    </select>-->
+
+</mapper>
