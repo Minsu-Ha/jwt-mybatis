@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="userResultMap">
+
+    <resultMap id="userResultMap" type="com.example.combine.admin.user.vo.UserVo">
+        <result property="userId" column="user_id"/>
+        <result property="password" column="user_name"/>
+        <collection property="role" javaType="arrayList" columnPrefix="r_" resultMap="roleResultMap"/>
+    </resultMap>
+    <resultMap id="userRoleResultMap" type="string" extends="userResultMap">
+        <result property="role" column="role"/>
+    </resultMap>
+
+
+
+</mapper>

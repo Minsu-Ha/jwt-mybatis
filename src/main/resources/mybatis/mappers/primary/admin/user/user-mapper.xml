@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+
+    <select id="selectUserById" parameterType="string" resultMap="userResultMap">
+        select t1.user_id
+             , t1.user_name
+             , t1.password
+             , t1.crt_time
+             , t1.udt_time
+             , t2.role AS r_role
+          from users t1, roles_users_mapping t2
+         where t1.user_id = t2.user_id
+           and t1.user_id = #{userId}
+    </select>
+    <insert id="insertUser" parameterType="com.example.combine.admin.user.vo.UserVo">
+        insert into users (
+                           user_id
+                         , password
+        ) values (
+                           #{userId}
+                         , #{password}
+        )
+    </insert>
+    <insert id="insertRole" parameterType="hashmap">
+        insert into roles_url_mapping (
+                            user_id
+                          , role
+        ) values (
+                  #{userId}
+                , #{role}
+        )
+    </insert>
+
+
+</mapper>
