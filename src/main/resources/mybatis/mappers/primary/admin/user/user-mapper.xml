@@ -3,15 +3,25 @@
 
 <mapper namespace="UserMapper">
 
+    <resultMap id="userResultMap" type="com.example.combine.admin.user.vo.UserVo">
+        <result property="userId" column="user_id"/>
+        <result property="password" column="password"/>
+        <collection property="role" javaType="arrayList" columnPrefix="r_" resultMap="userRoleResultMap"/>
+    </resultMap>
+    <resultMap id="userRoleResultMap" type="string" extends="userResultMap">
+        <result property="role" column="role"/>
+    </resultMap>
+
+
     <select id="selectUserById" parameterType="string" resultMap="userResultMap">
         select t1.user_id
-             , t1.user_name
              , t1.password
              , t1.crt_time
              , t1.udt_time
              , t2.role AS r_role
-          from users t1, roles_users_mapping t2
-         where t1.user_id = t2.user_id
+          from users t1
+          left join roles_users_mapping t2 on t1.user_id = t2.user_id
+         where 1 = 1
            and t1.user_id = #{userId}
     </select>
     <insert id="insertUser" parameterType="com.example.combine.admin.user.vo.UserVo">

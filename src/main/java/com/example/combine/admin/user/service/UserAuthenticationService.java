@@ -17,6 +17,6 @@ public class UserAuthenticationService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userDao.selectUser(session, username).orElseThrow();
+        return userDao.selectUser(session, username);
     }
 }

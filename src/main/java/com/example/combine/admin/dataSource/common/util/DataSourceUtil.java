@@ -1,7 +1,9 @@
 package com.example.combine.admin.dataSource.common.util;
 
+import com.example.combine.admin.log.CustomLogger;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -47,6 +49,11 @@ public class DataSourceUtil {
         sqlSessionFactory.setDataSource(this.dataSource);
         sqlSessionFactory
                 .setMapperLocations(this.mapperLocation);
+
+        Configuration config = new Configuration();
+        config.setMapUnderscoreToCamelCase(true);
+        config.setLogImpl(CustomLogger.class);
+        sqlSessionFactory.setConfiguration(config);
 
         this.sqlSessionFactory = sqlSessionFactory.getObject();
 

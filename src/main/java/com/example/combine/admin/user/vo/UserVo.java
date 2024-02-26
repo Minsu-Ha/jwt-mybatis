@@ -19,7 +19,7 @@ import java.util.List;
  * @NoArgsConstructor - Paramter가 없는 생성자 생성
  * @AllArgsConstructor - 모든 Parameter가 있는 생성자 생성
  * @Builder - Builder Pattern 으로 생성자 구현
- *
+ * <p>
  * 해당 Class는 기본적인 부분만 구현
  */
 @NoArgsConstructor
@@ -42,7 +42,9 @@ public class UserVo implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        this.role.forEach(v ->authorities.add(new SimpleGrantedAuthority(v)));
+        if (this.role != null) {
+            this.role.forEach(v -> authorities.add(new SimpleGrantedAuthority(v)));
+        }
         return authorities;
     }
 

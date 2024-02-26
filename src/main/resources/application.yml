@@ -6,6 +6,5 @@ spring:
       username: postgres
       password: 1234
 
-
 server:
   port: 80
